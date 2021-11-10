@@ -1,4 +1,4 @@
-# aula1310
+# Restaurante APP
 
 A new Flutter project.
 
