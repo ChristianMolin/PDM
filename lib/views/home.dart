@@ -9,7 +9,7 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  List<Restaurante> _restaurantes;
+  late List<Restaurante> _restaurantes;
   bool _isLoading = true;
 
   @override

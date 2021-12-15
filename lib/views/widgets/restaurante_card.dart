@@ -1,3 +1,4 @@
+import 'package:aula1310/views/widgets/descricao.dart';
 import 'package:flutter/material.dart';
 
 class RestauranteCard extends StatelessWidget {
@@ -6,10 +7,10 @@ class RestauranteCard extends StatelessWidget {
   final String status;
   final String thumbnailUrl;
   RestauranteCard({
-    @required this.nome,
-    @required this.status,
-    @required this.nota,
-    @required this.thumbnailUrl,
+    required this.nome,
+    required this.status,
+    required this.nota,
+    required this.thumbnailUrl,
   });
   @override
   Widget build(BuildContext context) {
@@ -36,18 +37,27 @@ class RestauranteCard extends StatelessWidget {
             Colors.black.withOpacity(0.35),
             BlendMode.multiply,
           ),
-          image: NetworkImage(thumbnailUrl ??
-              'https://static.vecteezy.com/ti/vetor-gratis/p3/2293510-ponto-de-interrogacao-sinal-de-neon-vetor.jpg'),
+          image: NetworkImage(thumbnailUrl),
           fit: BoxFit.cover,
         ),
       ),
       child: Stack(
         children: [
+          new InkWell(
+            onTap: () {
+              Navigator.of(context)
+                  .push(MaterialPageRoute(builder: (context) => descricao()));
+            },
+            child: Container(
+              width: 100.0,
+              height: 100.0,
+            ),
+          ),
           Align(
             child: Padding(
               padding: EdgeInsets.symmetric(horizontal: 5.0),
               child: Text(
-                nome ?? 'Não encontrado',
+                nome,
                 style: TextStyle(
                   fontSize: 19,
                 ),
@@ -96,7 +106,7 @@ class RestauranteCard extends StatelessWidget {
                         size: 18,
                       ),
                       SizedBox(width: 7),
-                      Text(status ?? 'Não encontrado'),
+                      Text(status),
                     ],
                   ),
                 )
@@ -108,4 +118,9 @@ class RestauranteCard extends StatelessWidget {
       ),
     );
   }
+}
+
+void _navegaParaDescricao(BuildContext context) {
+  Navigator.of(context)
+      .push(MaterialPageRoute(builder: (context) => descricao()));
 }

@@ -4,14 +4,19 @@ class Restaurante {
   final String nota;
   final String status;
 
-  Restaurante({this.nome, this.images, this.nota, this.status});
+  Restaurante(
+      {required this.nome,
+      required this.images,
+      required this.nota,
+      required this.status});
 
   factory Restaurante.fromJson(dynamic json) {
     return Restaurante(
-        nome: json['name'] as String,
-        nota: json['rating'] as String,
-        status: json['open_now_text'] as String,
-        images: json['photo'][0]['url'] as String);
+        nome: json['name'] ?? "Não encontrado",
+        nota: json['rating'] ?? "Sem nota",
+        status: json['open_now_text'] ?? "Não encontrado",
+        images: json['url'] ??
+            "https://static.vecteezy.com/ti/vetor-gratis/p3/2293510-ponto-de-interrogacao-sinal-de-neon-vetor.jpg");
   }
 
   static List<Restaurante> restaurantesFromSnapshot(List snapshot) {
